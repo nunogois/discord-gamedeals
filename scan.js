@@ -53,11 +53,11 @@ fs.readFile('scan.json', (err, data) => {
             .setImage(
               post.thumbnail.startsWith('http')
                 ? post.thumbnail
-                : 'https://github.com/nunogois/discord-gamedeals/blob/master/public/images/thumbnail.png?raw=true'
+                : 'https://github.com/nunogois/discord-gamedeals/blob/main/images/avatar.png?raw=true'
             )
             .setFooter(
               'discord-gamedeals',
-              'https://github.com/nunogois/discord-gamedeals/blob/master/public/images/thumbnail.png?raw=true'
+              'https://github.com/nunogois/discord-gamedeals/blob/main/images/avatar.png?raw=true'
             )
             .setTimestamp()
 
