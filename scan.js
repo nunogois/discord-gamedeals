@@ -33,6 +33,8 @@ fs.readFile('scan.json', (err, data) => {
           post =>
             !jsonData.sentPosts.includes(post.id) &&
             (post.score >= jsonData.minScore ||
+              (post.title.toLowerCase().indexOf('twitch') > -1 &&
+                post.title.toLowerCase().indexOf('prime') > -1) ||
               (jsonData.freeRegex &&
                 new RegExp(jsonData.freeRegex, 'gi').test(post.title)))
         )
@@ -45,8 +47,11 @@ fs.readFile('scan.json', (err, data) => {
             .setURL('https://www.reddit.com' + post.permalink)
             .setColor('#3266a9')
             .setDescription(
-              jsonData.freeRegex &&
-                new RegExp(jsonData.freeRegex, 'gi').test(post.title)
+              post.title.toLowerCase().indexOf('twitch') > -1 &&
+                post.title.toLowerCase().indexOf('prime') > -1
+                ? 'Twitch Prime 🎮'
+                : jsonData.freeRegex &&
+                  new RegExp(jsonData.freeRegex, 'gi').test(post.title)
                 ? 'Free game! 😁🎉'
                 : 'Might be a good deal 🤔'
             )
