@@ -12,7 +12,6 @@ fs.readFile('scan.json', (err, data) => {
     const jsonData = JSON.parse(data)
 
     cron.schedule(jsonData.cronSchedule, async () => {
-      console.log('scanning...')
       try {
         const { data } = await axios.get(
           'https://www.reddit.com/r/gamedeals.json'
@@ -41,7 +40,6 @@ fs.readFile('scan.json', (err, data) => {
         jsonData.sentPosts.push(...filteredPosts.map(post => post.id))
 
         filteredPosts.forEach(post => {
-          console.log(post)
           const embed = new MessageBuilder()
             .setTitle(post.title)
             .setURL('https://www.reddit.com' + post.permalink)
