@@ -1,6 +1,7 @@
 {
   "cronSchedule": "* * * * *",
   "minScore": 1000,
+  "minFreeScore": 50,
   "freeRegex": "\\(([^()]*(free|100%)[^()]*)\\)",
   "sentPosts": []
 }

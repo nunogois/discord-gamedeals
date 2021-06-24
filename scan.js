@@ -36,7 +36,8 @@ fs.readFile('scan.json', (err, data) => {
               (post.title.toLowerCase().indexOf('twitch') > -1 &&
                 post.title.toLowerCase().indexOf('prime') > -1) ||
               (jsonData.freeRegex &&
-                new RegExp(jsonData.freeRegex, 'gi').test(post.title)))
+                new RegExp(jsonData.freeRegex, 'gi').test(post.title) &&
+                post.score >= jsonData.minFreeScore))
         )
 
         jsonData.sentPosts.push(...filteredPosts.map(post => post.id))
